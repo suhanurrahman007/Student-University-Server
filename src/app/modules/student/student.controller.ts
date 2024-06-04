@@ -1,20 +1,8 @@
+/* eslint-disable no-console */
 import { Request, Response } from 'express';
-import { StudentServices } from './student.service';
+import { StudentServices } from './student.services';
 
-const createStudent = async (req: Request, res: Response) => {
-  try {
-    const { student: studentData } = req.body;
-    const result = await StudentServices.createStudentIntoDB(studentData);
 
-    res.status(200).json({
-      success: true,
-      message: 'Student is created succesfully',
-      data: result,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 const getAllStudents = async (req: Request, res: Response) => {
   try {
@@ -22,7 +10,7 @@ const getAllStudents = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      message: 'Students are retrieved succesfully',
+      message: 'Students are retrieved successfully',
       data: result,
     });
   } catch (err) {
@@ -47,7 +35,6 @@ const getSingleStudent = async (req: Request, res: Response) => {
 };
 
 export const StudentControllers = {
-  createStudent,
   getAllStudents,
   getSingleStudent,
 };
